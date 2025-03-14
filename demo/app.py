@@ -3,10 +3,10 @@ import torch
 from transformers import AutoConfig, AutoModelForCausalLM
 from janus.models import MultiModalityCausalLM, VLChatProcessor
 from PIL import Image
-
 import numpy as np
+import sys
 
-
+sys.path.append('/kaggle/working/Janus')
 # Load model and processor
 model_path = "deepseek-ai/Janus-1.3B"
 config = AutoConfig.from_pretrained(model_path)
@@ -165,7 +165,7 @@ with gr.Blocks() as demo:
             und_seed_input = gr.Number(label="Seed", precision=0, value=42)
             top_p = gr.Slider(minimum=0, maximum=1, value=0.95, step=0.05, label="top_p")
             temperature = gr.Slider(minimum=0, maximum=1, value=0.1, step=0.05, label="temperature")
-        
+
     understanding_button = gr.Button("Chat")
     understanding_output = gr.Textbox(label="Response")
 
@@ -174,11 +174,11 @@ with gr.Blocks() as demo:
         examples=[
             [
                 "explain this meme",
-                "images/doge.png",
+                "/kaggle/working/Janus/images/doge.png",
             ],
             [
                 "Convert the formula into latex code.",
-                "images/equation.png",
+                "/kaggle/working/Janus/images/equation.png",
             ],
         ],
         inputs=[question_input, image_input],

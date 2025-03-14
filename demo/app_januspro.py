@@ -73,7 +73,6 @@ def multimodal_understanding(image, question, seed, top_p, temperature):
     answer = tokenizer.decode(outputs[0].cpu().tolist(), skip_special_tokens=True)
     return answer
 
-
 def generate(input_ids,
              width,
              height,
